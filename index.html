@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Link | Trung PyKe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            /* Đảm bảo trang luôn chiếm hết chiều cao màn hình */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        .copy-toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #10b981;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            z-index: 1000;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .avatar-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Đảm bảo nội dung chính giãn nở để đẩy footer xuống dưới */
+        .main-content {
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+<body class="p-6 sm:p-12 items-center">
+
+    <!-- Thông báo Toast -->
+    <div id="toast" class="copy-toast">Đã sao chép!</div>
+
+    <div class="w-full max-w-md main-content flex flex-col items-center">
+        <!-- Profile Header -->
+        <div class="flex flex-col items-center mb-8">
+            <div class="relative mb-4">
+                <!-- Vòng tròn Avatar phía trên chữ Trung Pyke -->
+                <div class="w-32 h-32 rounded-full border-4 border-blue-500 avatar-glow overflow-hidden">
+                    <img src="avatar.jpg" 
+                         alt="Avatar" 
+                         class="w-full h-full object-cover"
+                         onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Trung'">
+                </div>
+                <div class="absolute bottom-2 right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-slate-900"></div>
+            </div>
+            <h1 class="text-2xl font-bold mb-1 tracking-tight text-center">Trung Pyke 🇻🇳</h1>
+            <p class="text-slate-400 text-sm mb-4 text-center italic px-4">"Ủng hộ e ly cà phê bên dưới"<br>Liên hệ công việc qua các kênh dưới đây</p>
+        </div>
+
+        <!-- Links Section -->
+        <div class="w-full mb-10">
+            <h2 class="text-xs uppercase font-bold text-slate-500 mb-4 tracking-widest ml-2">Liên kết chính</h2>
+            
+            <a href="https://www.facebook.com/phung.uc.trung.760090" target="_blank" class="link-button glass-card">
+                <div class="flex items-center">
+                    <span class="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-lg mr-4">
+                        <i class="fab fa-facebook-f"></i>
+                    </span>
+                    <span>Facebook Cá Nhân</span>
+                </div>
+                <i class="fas fa-chevron-right text-slate-500 text-xs"></i>
+            </a>
+
+            <a href="https://wescan.vn/your-id" target="_blank" class="link-button glass-card">
+                <div class="flex items-center">
+                    <span class="w-10 h-10 flex items-center justify-center bg-purple-600 rounded-lg mr-4">
+                        <i class="fas fa-qrcode"></i>
+                    </span>
+                    <span>Ủng hộ qua Wescan</span>
+                </div>
+                <i class="fas fa-chevron-right text-slate-500 text-xs"></i>
+            </a>
+        </div>
+
+        <!-- Banking Section -->
+        <div class="w-full mb-10">
+            <h2 class="text-xs uppercase font-bold text-slate-500 mb-4 tracking-widest ml-2">Thông tin chuyển khoản</h2>
+            
+            <!-- Thẻ Ngân hàng: ACB -->
+            <div class="glass-card rounded-2xl p-5 mb-4 relative overflow-hidden cursor-pointer" onclick="copyText('36837857', 'ACB')">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center">
+                        <img src="https://img.mservice.com.vn/app/img/payment/acb.png" alt="ACB" class="w-10 h-10 rounded-md mr-3 object-contain bg-white p-1" onerror="this.style.display='none'">
+                        <div>
+                            <p class="text-xs text-slate-400 uppercase font-semibold">Ngân hàng ACB</p>
+                            <p class="font-bold text-xl tracking-wider text-blue-400">36837857</p>
+                        </div>
+                    </div>
+                    <button class="bg-blue-500/20 text-blue-400 p-2 rounded-lg hover:bg-blue-500/30">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                <p class="text-sm text-slate-300 font-medium uppercase">PHUNG DUC TRUNG</p>
+                <div class="absolute -bottom-2 -right-2 opacity-10 text-6xl">
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer đã được đưa xuống cuối trang -->
+    <footer class="text-center py-6 mt-auto w-full">
+        <p class="text-slate-500 text-xs font-medium tracking-wide">© 2026 Trung Pyke.</p>
+    </footer>
+
+    <!-- Hidden Input để Copy -->
+    <input type="text" id="copyInput" class="hidden">
+
+    <script>
+        function copyText(value, bankName) {
+            const input = document.getElementById('copyInput');
+            input.value = value;
+            input.classList.remove('hidden');
+            input.select();
+            input.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                showToast(`Đã sao chép`);
+            } catch (err) {
+                console.error('Không thể sao chép', err);
+            }
+            
+            input.classList.add('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
