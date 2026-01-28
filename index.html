@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bio Link | Trung PyKe</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%233b82f6;stop-opacity:1' /><stop offset='100%' style='stop-color:%238b5cf6;stop-opacity:1' /></linearGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23g)'/><path d='M35 50 C35 41.7 41.7 35 50 35 L60 35 M65 50 C65 58.3 58.3 65 50 65 L40 65' stroke='white' stroke-width='8' fill='none' stroke-linecap='round'/><rect x='42' y='46' width='16' height='8' rx='4' fill='white'/></svg>" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -13,7 +14,6 @@
             font-family: 'Inter', sans-serif;
             background: #0f172a;
             color: #f8fafc;
-            /* Đảm bảo trang luôn chiếm hết chiều cao màn hình */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -67,7 +67,6 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
         }
         
-        /* Đảm bảo nội dung chính giãn nở để đẩy footer xuống dưới */
         .main-content {
             flex: 1 0 auto;
         }
@@ -91,7 +90,7 @@
                 </div>
                 <div class="absolute bottom-2 right-2 bg-green-500 w-6 h-6 rounded-full border-2 border-slate-900"></div>
             </div>
-            <h1 class="text-2xl font-bold mb-1 tracking-tight text-center">Trung Pyke 🇻🇳</h1>
+            <h1 class="text-2xl font-bold mb-1 tracking-tight text-center">Trung PyKe 🇻🇳</h1>
             <p class="text-slate-400 text-sm mb-4 text-center italic px-4">"Ủng hộ e ly cà phê bên dưới"<br>Liên hệ công việc qua các kênh dưới đây</p>
         </div>
 
@@ -123,8 +122,6 @@
         <!-- Banking Section -->
         <div class="w-full mb-10">
             <h2 class="text-xs uppercase font-bold text-slate-500 mb-4 tracking-widest ml-2">Thông tin chuyển khoản</h2>
-            
-            <!-- Thẻ Ngân hàng: ACB -->
             <div class="glass-card rounded-2xl p-5 mb-4 relative overflow-hidden cursor-pointer" onclick="copyText('36837857', 'ACB')">
                 <div class="flex justify-between items-start mb-4">
                     <div class="flex items-center">
@@ -145,13 +142,9 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer đã được đưa xuống cuối trang -->
     <footer class="text-center py-6 mt-auto w-full">
         <p class="text-slate-500 text-xs font-medium tracking-wide">© 2026 Trung Pyke.</p>
     </footer>
-
-    <!-- Hidden Input để Copy -->
     <input type="text" id="copyInput" class="hidden">
 
     <script>
