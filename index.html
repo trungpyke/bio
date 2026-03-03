@@ -81,7 +81,6 @@
         <!-- Profile Header -->
         <div class="flex flex-col items-center mb-8">
             <div class="relative mb-4">
-                <!-- Vòng tròn Avatar phía trên chữ Trung Pyke -->
                 <div class="w-32 h-32 rounded-full border-4 border-blue-500 avatar-glow overflow-hidden">
                     <img src="avatar.jpg" 
                          alt="Avatar" 
@@ -122,6 +121,8 @@
         <!-- Banking Section -->
         <div class="w-full mb-10">
             <h2 class="text-xs uppercase font-bold text-slate-500 mb-4 tracking-widest ml-2">Thông tin chuyển khoản</h2>
+            
+            <!-- Thẻ text thông tin -->
             <div class="glass-card rounded-2xl p-5 mb-4 relative overflow-hidden cursor-pointer" onclick="copyText('36837857', 'ACB')">
                 <div class="flex justify-between items-start mb-4">
                     <div class="flex items-center">
@@ -140,6 +141,21 @@
                     <i class="fas fa-university"></i>
                 </div>
             </div>
+
+            <!-- MỚI: Thẻ QR Code chuyển khoản -->
+            <div class="glass-card rounded-2xl p-6 relative flex flex-col items-center">
+                <p class="text-sm text-slate-300 font-medium uppercase mb-4 tracking-widest">Mã QR Thanh Toán</p>
+                
+                <!-- Bọc ảnh bằng nền trắng để app ngân hàng dễ quét mã hơn -->
+                <div class="bg-white p-3 rounded-xl shadow-lg border border-slate-700/50 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <img src="bank.jpg" 
+                         alt="Mã QR Chuyển Khoản" 
+                         class="w-48 h-48 object-contain rounded-lg"
+                         onerror="this.src='https://placehold.co/400x400/f8fafc/0f172a?text=L%E1%BB%97i+t%E1%BA%A3i+%E1%BA%A3nh'">
+                </div>
+                
+                <p class="text-xs text-slate-400 mt-4 italic text-center"><i class="fas fa-camera mr-1"></i> Sử dụng App Ngân hàng để quét mã</p>
+            </div>
         </div>
     </div>
     <footer class="text-center py-6 mt-auto w-full">
@@ -157,7 +173,7 @@
 
             try {
                 document.execCommand('copy');
-                showToast(`Đã sao chép`);
+                showToast(`Đã sao chép số tài khoản`);
             } catch (err) {
                 console.error('Không thể sao chép', err);
             }
